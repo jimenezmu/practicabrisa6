@@ -24,6 +24,15 @@ workflows:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
+      
+       - name: Build debug apk
+        script: flutter build apk --debug 
+        - name: Get Flutter packages
+        script: flutter packages pub get
+        - name: Flutter analyze 
+        scrip: flutter analyze 
+        - name: Flutter unit tests
+        script: fluter test
     publishing:
       email:
         recipients:
